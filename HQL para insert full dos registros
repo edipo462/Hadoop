@@ -1,0 +1,25 @@
+--CRIAR TABELA AUXILIAR COM OS MESMOS ATRIBUTOS DA TABELA COM PROBLEMA
+
+CREATE TABLE IF NOT EXISTS db_labs.cadastro_parquet_2(
+  nome string, 
+  tel STRING, 
+  idade STRING,    
+  cpf STRING, 
+  sexo STRING)
+COMMENT 'cadastro parquet.'
+STORED AS PARQUET;
+
+--INSERIR OS DADOS DA TABELA COM MUITOS BLOCOS NA TABELA AUXILIAR
+
+INSERT overwrite db_labs.cadastro_parquet_2
+select * from db_labs.cadastro_parquet;
+
+--ALTERAR NOME DA TABELA COM PROBLEMA PARA _OLD
+ALTER TABLE db_labs.cadastro_parquet RENAME TO db_labs.cadastro_parquet_old;
+
+--ALTERAR NOME DA TABELA AUXILIAR PARA O NOME DA TABELA COM PROBLEMA
+ALTER TABLE db_labs.cadastro_parquet_2 RENAME TO db_labs.cadastro_parquet;
+
+--DROPAR TABELA _OLD
+
+DROP TABLE IF EXISTS db_labs.cadastro_parquet_old;
