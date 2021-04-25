@@ -1,4 +1,4 @@
-# Hadoop 
+# Solucionando problema de Blocksize com Hive 
 
 - Resolvendo problemas de pequenos dados no HDFS
 
