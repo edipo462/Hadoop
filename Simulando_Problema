@@ -1,3 +1,22 @@
+#Para simular o problema é necessário criar uma tabela externa a partir do arquivo (arquivo de cadastro que criei) e inserir em uma tabela no formato parquet.
+
+--Simulando o problema:
+
+-- Criando as tabelas a partir dos arquivos já no hdfs
+
+CREATE EXTERNAL TABLE IF NOT EXISTS db_labs.cadastro_external (
+  nome string, 
+  tel STRING, 
+  idade STRING,    
+  cpf STRING, 
+  sexo STRING)
+  COMMENT 'cadstro'
+  ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY ';'
+  STORED AS TEXTFILE
+  LOCATION '/raw/cadastro';
+  
+select * from db_labs.cadastro_external;
   
 --Criando as tabelas parquet para receber o insert da tabela externa
 
@@ -13,3 +32,4 @@ STORED AS PARQUET;
 --Inserindo os dados da tabela externa em uma tabela parquet
 INSERT INTO db_labs.cadastro_parquet
 select * from db_labs.cadastro_external;
+
