@@ -1,0 +1,15 @@
+  
+--Criando as tabelas parquet para receber o insert da tabela externa
+
+CREATE TABLE IF NOT EXISTS db_labs.cadastro_parquet(
+  nome string, 
+  tel STRING, 
+  idade STRING,    
+  cpf STRING, 
+  sexo STRING)
+COMMENT 'cadastro parquet.'
+STORED AS PARQUET;
+
+--Inserindo os dados da tabela externa em uma tabela parquet
+INSERT INTO db_labs.cadastro_parquet
+select * from db_labs.cadastro_external;
