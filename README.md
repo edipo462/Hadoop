@@ -33,3 +33,11 @@ Apos o final da rotina acima, temos que limpar o HDFS:
 
 ![image](https://user-images.githubusercontent.com/50892034/116011150-ef96a880-a5f9-11eb-8cdd-c9735a5f6aaf.png)
 
+Após Rotina acima, os arquivos foram agrupados em um só bloco no HDFS:
+
+![image](https://user-images.githubusercontent.com/50892034/116011260-75b2ef00-a5fa-11eb-805b-82b2a2f02787.png)
+
+Os scripts e dados utilizados estao anexos...
+
+abraços.
+
